@@ -11,7 +11,7 @@ process.stdout.write(`${line}\n${msg}\n${line}\n`);
 
 module.exports = {
     mode: "production",
-    entry: "./src/main.js",
+    entry: "./src/index.js",
     output: {
         path: path.resolve(process.cwd(), 'dist'),
         filename: "./bundle.min.js"
@@ -37,20 +37,32 @@ module.exports = {
             {
                 test: /\.(gif|png|jpe?g|svg|xml|glsl)$/i,
                 use: "file-loader"
-            }
+            },
+	    {
+		test: /\.lisp$/,
+		use: [
+		    {
+			loader: path.resolve(__dirname, "../loaders/parenscript-loader.js")
+		    }
+		]
+	    }
+
         ]
+    },
+    resolve: {
+	extensions: ['.js', '.lisp']
     },
     optimization: {
-        minimizer: [
-            new TerserPlugin({
-                terserOptions: {
-                    output: {
-                        comments: false
-                    }
-                }
-            })
-        ]
-    },
+		   minimizer: [
+			       new TerserPlugin({
+						 terserOptions: {
+								 output: {
+									  comments: false
+									  }
+								 }
+						 })
+			       ]
+		   },
     plugins: [
         new CleanWebpackPlugin(),
         new webpack.DefinePlugin({

@@ -6,7 +6,7 @@ const webpack = require("webpack");
 module.exports = {
     mode: "development",
     devtool: "eval-source-map",
-    entry: "./src/main.js",
+    entry: "./src/index.js",
     output: {
         path: path.resolve(process.cwd(), 'dist'),
         filename: "bundle.min.js"
@@ -27,25 +27,36 @@ module.exports = {
             {
                 test: /\.(gif|png|jpe?g|svg|xml|glsl)$/i,
                 use: "file-loader"
-            }
+            },
+	    {
+		test: /\.lisp$/,
+		use: [
+		    {
+			loader: path.resolve(__dirname, "../loaders/parenscript-loader.js")
+		    }
+		]
+	    }
         ]
     },
+    resolve: {
+	extensions: ['.js', '.lisp']
+    },
     plugins: [
-        new CleanWebpackPlugin({
-            cleanOnceBeforeBuildPatterns: [path.join(__dirname, "dist/**/*")]
-        }),
-        new webpack.DefinePlugin({
-            "typeof CANVAS_RENDERER": JSON.stringify(true),
-            "typeof WEBGL_RENDERER": JSON.stringify(true),
-            "typeof WEBGL_DEBUG": JSON.stringify(true),
-            "typeof EXPERIMENTAL": JSON.stringify(true),
-            "typeof PLUGIN_3D": JSON.stringify(false),
-            "typeof PLUGIN_CAMERA3D": JSON.stringify(false),
-            "typeof PLUGIN_FBINSTANT": JSON.stringify(false),
-            "typeof FEATURE_SOUND": JSON.stringify(true)
-        }),
-        new HtmlWebpackPlugin({
-            template: "./index.html"
-        })
-    ]
+              new CleanWebpackPlugin({
+				      cleanOnceBeforeBuildPatterns: [path.join(__dirname, "dist/**/*")]
+				      }),
+              new webpack.DefinePlugin({
+					"typeof CANVAS_RENDERER": JSON.stringify(true),
+					"typeof WEBGL_RENDERER": JSON.stringify(true),
+					"typeof WEBGL_DEBUG": JSON.stringify(true),
+					"typeof EXPERIMENTAL": JSON.stringify(true),
+					"typeof PLUGIN_3D": JSON.stringify(false),
+					"typeof PLUGIN_CAMERA3D": JSON.stringify(false),
+					"typeof PLUGIN_FBINSTANT": JSON.stringify(false),
+					"typeof FEATURE_SOUND": JSON.stringify(true)
+					}),
+              new HtmlWebpackPlugin({
+				     template: "./index.html"
+				     })
+	      ]
 };
