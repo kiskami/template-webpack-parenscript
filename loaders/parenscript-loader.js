@@ -18,9 +18,8 @@ module.exports = function(source) {
     const filePath = this.resourcePath.replace(/\\/g, '/');
 
     try {
-        const sbclExpr1 = "(require :parenscript)";
-	const sbclExpr2 = `(progn (write-string (parenscript:ps-compile-file "'${filePath}'")))`;
-        const sbclCommand = `sbcl --noinform --noprint --eval '${sbclExpr1}' --eval '${sbclExpr2}'`;
+	const sbclExpr1 = `(progn (write-string (parenscript:ps-compile-file "'${filePath}'")))`;
+        const sbclCommand = `sbcl --noinform --noprint --load \"loaders/ps-preload.lisp\" --eval '${sbclExpr1}'`;
 
         const jsCode = execSync(sbclCommand, { encoding: 'utf8' });
 
