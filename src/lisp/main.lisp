@@ -2,14 +2,11 @@
 
 (defvar *__PS_MV_REG*)
 
-;;import StartGame from './game/main';
-
 (imp6 *boot "../game/scenes/Boot")
 (imp6 (:*game :as :*Main-Game) "../game/scenes/Game")
 (imp6 *game-Over "../game/scenes/GameOver")
 (imp6 *main-Menu "../game/scenes/MainMenu")
 (imp6 *preloader "../game/scenes/Preloader")
-(imp6 (:*game) "phaser")
 
 ;; Find out more information about the Game Config at:
 ;; https://docs.phaser.io/api-documentation/typedef/types-core#gameconfig  
@@ -44,7 +41,5 @@
 (ps:chain document
 	  (add-event-listener "DOMContentLoaded"
 			      (lambda () (*start-Game *config* "game-container"))))
-  
-;;(ps:setf (ps:@ module exports) *start-Game)
 
 (ps:chain console (log "started"))

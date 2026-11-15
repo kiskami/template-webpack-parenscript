@@ -85,5 +85,8 @@ module.exports = {
                 { from: 'public/style.css', to: 'style.css' }
             ],
         }),
+	new webpack.ProvidePlugin({
+            Phaser: 'phaser'
+	}),
     ]
 };
