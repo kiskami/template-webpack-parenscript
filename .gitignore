@@ -1,5 +1,6 @@
 *~
 tmp
+*.fasl
 
 # System and IDE files
 Thumbs.db

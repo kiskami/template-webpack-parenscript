@@ -2,7 +2,7 @@
 
 (defvar *__PS_MV_REG*)
 
-(imp6 *boot "../game/scenes/Boot")
+(imp6 *boot "../lisp/scenes/Boot")
 (imp6 (:*game :as :*Main-Game) "../game/scenes/Game")
 (imp6 *game-Over "../game/scenes/GameOver")
 (imp6 *main-Menu "../game/scenes/MainMenu")
