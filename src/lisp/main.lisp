@@ -3,10 +3,10 @@
 (defvar *__PS_MV_REG*)
 
 (imp6 *boot "../lisp/scenes/Boot")
-(imp6 (:*game :as :*Main-Game) "../game/scenes/Game")
-(imp6 *game-Over "../game/scenes/GameOver")
-(imp6 *main-Menu "../game/scenes/MainMenu")
-(imp6 *preloader "../game/scenes/Preloader")
+(imp6 (:*game :as :*Main-Game) "../lisp/scenes/Game")
+(imp6 *game-Over "../lisp/scenes/GameOver")
+(imp6 *main-Menu "../lisp/scenes/MainMenu")
+(imp6 *preloader "../lisp/scenes/Preloader")
 
 ;; Find out more information about the Game Config at:
 ;; https://docs.phaser.io/api-documentation/typedef/types-core#gameconfig  
@@ -26,11 +26,12 @@
 	  *main-Menu
 	  *main-game
 	  *game-Over)
-   callbacks (ps:create
-	      post-boot (lambda (game)
-			  ((ps:chain game scene dump)
-			   )
-			  nil))))
+   ;; callbacks (ps:create
+   ;; 	      post-boot (lambda (game)
+   ;; 			  ((ps:chain game scene dump)
+   ;; 			   )
+   ;; 			  nil))
+   ))
 
 (defparameter *start-Game
   (lambda (config parent_)
