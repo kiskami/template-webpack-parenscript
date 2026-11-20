@@ -1,0 +1,24 @@
+#+TITLE: Phaser Webpack Template Parenscript
+#+AUTHOR: kiskami
+
+This is a modified Phaser 4 project template that uses webpack for bundling and Parenscript as its programming language. It supports hot-reloading for a fast development workflow and includes scripts to generate production-ready builds.
+
+Please see the original [[./README_orig.md]] for more information on the original template.
+
+* Requirements
+
+- You will need SBCL with Parenscript installed and accessible to it.
+
+* Writing code
+
+Thanks to a custom webpack loader, you can write JavaScript classes in Parenscript inside Lisp files.
+
+The loader also prints the generated JavaScript code to the terminal where =npm run dev= is running.
+
+* Copyrights
+Created by Phaser Studio. Powered by coffee, anime, pixels and love.
+Modified, ported by kiskami, Zalaegerszeg, Hungary
+
+The Phaser logo and characters are © 2011 - 2025 Phaser Studio Inc.
+
+All rights reserved.
